@@ -196,27 +196,31 @@ const showDialog = function (editor) {
         items: generalFormItems
     },
     {
-        title: 'Embed',
-        type: 'container',
-        layout: 'flex',
-        direction: 'column',
-        align: 'stretch',
-        padding: 10,
-        spacing: 10,
-        items: [
-          {
-            type: 'label',
-            text: 'Paste your embed code below:',
-            forId: 'mcemediasource'
-          },
-          embedTextBox
-        ]
-      }
+      title: 'Embed',
+      type: 'container',
+      layout: 'flex',
+      direction: 'column',
+      align: 'stretch',
+      padding: 10,
+      spacing: 10,
+      items: [
+        {
+          type: 'label',
+          text: 'Paste your embed code below:',
+          forId: 'mcemediasource'
+        },
+        embedTextBox
+      ]
+    }
   ];
 
   if (advancedFormItems.length > 0) {
     body.push({ title: 'Advanced', type: 'form', items: advancedFormItems });
   }
+
+  Settings.customMediaForms(editor).forEach(form => {
+    body.unshift(form);
+  });
 
   win = editor.windowManager.open({
     title: 'Insert/edit media',

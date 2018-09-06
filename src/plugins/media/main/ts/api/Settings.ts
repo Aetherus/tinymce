@@ -44,6 +44,10 @@ const hasDimensions = function (editor) {
   return editor.getParam('media_dimensions', true);
 };
 
+const customMediaForms = function (editor) {
+  return editor.getParam('custom_media_forms', [])
+};
+
 export default {
   getScripts,
   getAudioTemplateCallback,
@@ -53,5 +57,6 @@ export default {
   getUrlResolver,
   hasAltSource,
   hasPoster,
-  hasDimensions
+  hasDimensions,
+  customMediaForms
 };
